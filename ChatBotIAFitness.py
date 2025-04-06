@@ -1,8 +1,11 @@
 import requests
 
 # Load API key from external file
-with open("api_key.txt", "r") as file:
-    chave_api = file.read().strip()
+try:
+    with open("api_key.txt", "r") as file:
+        chave_api = file.read().strip()
+except FileNotFoundError:
+    raise FileNotFoundError("O arquivo 'api_key.txt' não foi encontrado. Certifique-se de que ele existe e contém a chave da API.")
 
 # Define context directly in the code with specific class schedules
 prompt = (
